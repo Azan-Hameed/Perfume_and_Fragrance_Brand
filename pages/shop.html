@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Creations | MAISON ZAYN Haute Parfumerie</title>
+  <meta name="description" content="Explore the MAISON ZAYN Haute Parfumerie collection: Oudh Imperial, Santal de Grasse, Rose Ispahan, Musc Blanc, Vétiver & Cuir, and Bergamote Sauvage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="announcement-bar" role="region" aria-label="Maison announcement">
+    Complimentary <strong>2ml Sample &amp; Free Express Shipping</strong> on all orders over $150
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-logo" aria-label="MAISON ZAYN Home">
+        <span class="brand-logo__title">MAISON ZAYN</span>
+        <span class="brand-logo__sub">Haute Parfumerie</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active" aria-current="page">Shop</a>
+        <a href="gift-sets.html" class="nav-link">Gift Sets</a>
+        <a href="contact-branches.html" class="nav-link">Branches</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="bag-trigger" data-open-bag aria-label="Open shopping bag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 7h12l1 13H5L6 7z"></path>
+            <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
+          </svg>
+          <span class="bag-trigger__label">Bag</span>
+          <span class="bag-count" data-bag-count>0</span>
+        </button>
+
+        <button type="button" class="menu-toggle" data-drawer-open aria-label="Open navigation menu" aria-controls="mobile-drawer" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div>
+      <div class="mobile-drawer__head">
+        <span class="mobile-drawer__brand">MAISON ZAYN</span>
+        <button type="button" class="drawer-close" data-drawer-close aria-label="Close navigation menu">&times;</button>
+      </div>
+      <nav aria-label="Mobile links">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="shop.html" class="mobile-nav-link active" aria-current="page">Shop</a></li>
+          <li><a href="gift-sets.html" class="mobile-nav-link">Gift Sets</a></li>
+          <li><a href="contact-branches.html" class="mobile-nav-link">Branches</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile-drawer__foot">
+      Paris · Dubai · Islamabad · London<br>
+      Concierge: concierge@maisonzayn.com
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <span class="page-hero__eyebrow">HAUTE PARFUMERIE COLLECTION</span>
+        <h1 id="hero-title" class="page-hero__title">Shop All Creations</h1>
+        <p class="page-hero__subtitle">
+          Small-batch extraits and eaux de parfum compounded in Grasse with rare botanical absolutes, aged resins, and luminous citrus.
+        </p>
+        <div class="hero-divider" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="section-pad" aria-label="Fragrance catalog">
+      <div class="container">
+        <div class="shop-toolbar">
+          <div class="filter-chips" role="group" aria-label="Filter creations by olfactory family">
+            <button type="button" class="filter-chip is-active" data-category="ALL" aria-pressed="true">ALL</button>
+            <button type="button" class="filter-chip" data-category="OUDH" aria-pressed="false">OUDH</button>
+            <button type="button" class="filter-chip" data-category="WOODY" aria-pressed="false">WOODY</button>
+            <button type="button" class="filter-chip" data-category="FLORAL" aria-pressed="false">FLORAL</button>
+            <button type="button" class="filter-chip" data-category="FRESH" aria-pressed="false">FRESH</button>
+          </div>
+
+          <div class="toolbar-controls">
+            <div class="search-box">
+              <label for="shop-search" class="sr-only">Search fragrances or scent notes</label>
+              <input id="shop-search" type="search" class="search-input" placeholder="Search name or note..." autocomplete="off">
+            </div>
+
+            <label class="sort-wrap" for="shop-sort">
+              <span>Sort</span>
+              <select id="shop-sort" class="sort-select" aria-label="Sort creations">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price Low-High</option>
+                <option value="price-desc">Price High-Low</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="results-meta">
+          <p id="results-count" aria-live="polite">Showing 6 creations</p>
+        </div>
+
+        <div id="products-grid" class="cards-grid"></div>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <h2 class="empty-state__title">No Matching Creations Found</h2>
+          <p class="empty-state__text">
+            No fragrances match your current category or note filter. Reset your filters to view the full Maison Zayn collection.
+          </p>
+          <button type="button" id="reset-filters-btn" class="btn btn-primary">Reset Filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="product-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-product-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close fragrance details">&times;</button>
+      <div class="modal-body">
+        <div id="modal-bottle-visual" class="modal-visual"></div>
+        <div>
+          <span id="modal-product-category" class="modal-eyebrow"></span>
+          <h2 id="modal-product-title" class="modal-title"></h2>
+          <div id="modal-product-price" class="modal-price"></div>
+          <p id="modal-product-desc" class="modal-desc"></p>
+
+          <div class="notes-list" aria-label="Olfactory pyramid">
+            <div class="notes-list__row"><strong>Top</strong> <span id="modal-note-top"></span></div>
+            <div class="notes-list__row"><strong>Heart</strong> <span id="modal-note-heart"></span></div>
+            <div class="notes-list__row"><strong>Base</strong> <span id="modal-note-base"></span></div>
+          </div>
+
+          <button type="button" id="modal-add-bag" class="btn btn-primary" style="width: 100%;">Add to Bag</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand__name">MAISON ZAYN</div>
+          <p class="footer-brand__copy">
+            Contemporary haute parfumerie bridging Parisian craftsmanship and timeless Oriental resins.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Collections</h2>
+          <ul class="footer-links">
+            <li><a href="shop.html">Shop All Creations</a></li>
+            <li><a href="gift-sets.html">Gift Sets &amp; Discovery Kits</a></li>
+            <li><a href="../index.html">Maison Heritage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Flagship Salons</h2>
+          <ul class="footer-links">
+            <li><a href="contact-branches.html">Paris · Rue Saint-Honoré</a></li>
+            <li><a href="contact-branches.html">Dubai · Dubai Mall</a></li>
+            <li><a href="contact-branches.html">Islamabad · F-7 Markaz</a></li>
+            <li><a href="contact-branches.html">London · Mayfair</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Client Concierge</h2>
+          <ul class="footer-links">
+            <li><a href="contact-branches.html#consultation-form">Book Private Consultation</a></li>
+            <li><a href="gift-sets.html#gift-calculator">Gift &amp; Shipping Calculator</a></li>
+            <li>concierge@maisonzayn.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 MAISON ZAYN. All rights reserved.</span>
+        <span>Complimentary 2ml Sample &amp; Free Express Shipping Over $150</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const PRODUCTS = [
+        {
+          id: 'oudh-imperial',
+          name: 'Oudh Imperial',
+          shortLabel: 'OUDH IMPERIAL',
+          category: 'OUDH',
+          price: 145,
+          concentration: 'Extrait de Parfum · 100ml',
+          concentrationShort: 'EXTRAIT · 100ML',
+          summary: 'Smoked Cambodian oudh draped in crimson saffron and warm ambergris.',
+          story: 'Macerated in oak casks for twelve weeks, Oudh Imperial balances rare aged agarwood with velvet Damask rose and glowing labdanum.',
+          notes: {
+            top: 'Kashmiri Saffron, Green Cardamom, Pink Pepper',
+            heart: 'Aged Cambodian Oudh, Damask Rose, Incense Smoke',
+            base: 'Ambergris, Smoked Labdanum, Mysore Sandalwood'
+          },
+          liquidColor: '#C19A4F',
+          capColor: '#111111'
+        },
+        {
+          id: 'santal-de-grasse',
+          name: 'Santal de Grasse',
+          shortLabel: 'SANTAL DE GRASSE',
+          category: 'WOODY',
+          price: 115,
+          concentration: 'Eau de Parfum · 100ml',
+          concentrationShort: 'EDP · 100ML',
+          summary: 'Creamy Mysore sandalwood folded into powdery Florentine iris and cedar.',
+          story: 'A meditative woody signature inspired by sunlit Provençal ateliers, pairing silken sandalwood shavings with iris butter and white amber.',
+          notes: {
+            top: 'Calabrian Bergamot, Crushed Violet Leaf, Pink Pepper',
+            heart: 'Mysore Sandalwood, Florentine Iris, Cardamom',
+            base: 'Atlas Cedarwood, White Amber, Tonka Bean'
+          },
+          liquidColor: '#D4B06A',
+          capColor: '#2A231C'
+        },
+        {
+          id: 'rose-ispahan',
+          name: 'Rose Ispahan',
+          shortLabel: 'ROSE ISPAHAN',
+          category: 'FLORAL',
+          price: 120,
+          concentration: 'Extrait de Parfum · 100ml',
+          concentrationShort: 'EXTRAIT · 100ML',
+          summary: 'Dewy Centifolia and Damask roses lifted by lychee and dark patchouli.',
+          story: 'Harvested at dawn before the sun opens the petals, Rose Ispahan captures the luminous nectar of Persian gardens over a sensual chypre base.',
+          notes: {
+            top: 'Sunlit Lychee, Blackcurrant Bud, Mandarin Zest',
+            heart: 'Rose Centifolia, Damask Rose, White Peony',
+            base: 'Indonesian Patchouli, Velvet Musk, Benzoin'
+          },
+          liquidColor: '#D9A7A0',
+          capColor: '#1A1714'
+        },
+        {
+          id: 'musc-blanc',
+          name: 'Musc Blanc',
+          shortLabel: 'MUSC BLANC',
+          category: 'FRESH',
+          price: 110,
+          concentration: 'Eau de Parfum · 100ml',
+          concentrationShort: 'EDP · 100ML',
+          summary: 'Clean linen aldehydes, white pear, and weightless cashmere skin musk.',
+          story: 'Intimate and radiant like morning light across raw silk, Musc Blanc wraps lily of the valley in translucent botanical musks.',
+          notes: {
+            top: 'Crisp Aldehydes, White Pear, Ambrette Seed',
+            heart: 'Lily of the Valley, Cashmere Accord, White Tea',
+            base: 'Skin Musk, Tonka Cream, Pale Cedar'
+          },
+          liquidColor: '#E8E2D5',
+          capColor: '#2A231C'
+        },
+        {
+          id: 'vetiver-et-cuir',
+          name: 'Vétiver & Cuir',
+          shortLabel: 'VÉTIVER & CUIR',
+          category: 'WOODY',
+          price: 115,
+          concentration: 'Eau de Parfum · 100ml',
+          concentrationShort: 'EDP · 100ML',
+          summary: 'Earthy Haitian vetiver anchored by supple Tuscan suede and bitter orange.',
+          story: 'Tailored and architectural, Vétiver & Cuir contrasts crisp green roots and cracked black pepper against burnished saddle leather.',
+          notes: {
+            top: 'Bitter Orange, Madagascar Black Pepper, Juniper',
+            heart: 'Haitian Vetiver, Clary Sage, Violet Leaf',
+            base: 'Tuscan Suede, Oakmoss, Smoked Birch'
+          },
+          liquidColor: '#B59B72',
+          capColor: '#111111'
+        },
+        {
+          id: 'bergamote-sauvage',
+          name: 'Bergamote Sauvage',
+          shortLabel: 'BERGAMOTE SAUVAGE',
+          category: 'FRESH',
+          price: 100,
+          concentration: 'Eau de Parfum · 100ml',
+          concentrationShort: 'EDP · 100ML',
+          summary: 'Sparkling Calabrian bergamot, sun-warmed neroli, and mineral cedar.',
+          story: 'An invigorating Mediterranean breeze bottling wild citrus orchards, crushed petitgrain leaves, and salted coastal driftwood.',
+          notes: {
+            top: 'Calabrian Bergamot, Amalfi Citron, Grapefruit Peel',
+            heart: 'Tunisian Neroli, Petitgrain, Sea Salt Accord',
+            base: 'White Cedar, Crisp Mineral Musk, Vetiver Root'
+          },
+          liquidColor: '#D6DFC2',
+          capColor: '#1A1714'
+        }
+      ];
+
+      let activeCategory = 'ALL';
+      let activeSort = 'featured';
+      let searchTerm = '';
+      let activeModalProduct = null;
+
+      const gridEl = document.getElementById('products-grid');
+      const emptyEl = document.getElementById('empty-state');
+      const countEl = document.getElementById('results-count');
+      const filterButtons = document.querySelectorAll('.filter-chip');
+      const sortSelect = document.getElementById('shop-sort');
+      const searchInput = document.getElementById('shop-search');
+      const resetBtn = document.getElementById('reset-filters-btn');
+
+      const modalEl = document.getElementById('product-modal');
+      const modalBottleEl = document.getElementById('modal-bottle-visual');
+      const modalCategoryEl = document.getElementById('modal-product-category');
+      const modalTitleEl = document.getElementById('modal-product-title');
+      const modalPriceEl = document.getElementById('modal-product-price');
+      const modalDescEl = document.getElementById('modal-product-desc');
+      const modalTopEl = document.getElementById('modal-note-top');
+      const modalHeartEl = document.getElementById('modal-note-heart');
+      const modalBaseEl = document.getElementById('modal-note-base');
+      const modalAddBtn = document.getElementById('modal-add-bag');
+
+      function getFilteredProducts() {
+        const query = searchTerm.trim().toLowerCase();
+
+        const filtered = PRODUCTS.filter(function (product) {
+          const matchesCategory = activeCategory === 'ALL' || product.category === activeCategory;
+          if (!matchesCategory) return false;
+          if (!query) return true;
+
+          const searchable = [
+            product.name,
+            product.category,
+            product.summary,
+            product.notes.top,
+            product.notes.heart,
+            product.notes.base
+          ].join(' ').toLowerCase();
+
+          return searchable.indexOf(query) !== -1;
+        });
+
+        if (activeSort === 'price-asc') {
+          filtered.sort(function (a, b) { return a.price - b.price; });
+        } else if (activeSort === 'price-desc') {
+          filtered.sort(function (a, b) { return b.price - a.price; });
+        }
+
+        return filtered;
+      }
+
+      function openDetailsModal(product) {
+        activeModalProduct = product;
+        modalBottleEl.innerHTML = window.MaisonZayn.createPerfumeBottleSVG(product);
+        modalCategoryEl.textContent = product.category + ' · ' + product.concentration;
+        modalTitleEl.textContent = product.name;
+        modalPriceEl.textContent = '$' + product.price;
+        modalDescEl.textContent = product.story;
+        modalTopEl.textContent = product.notes.top;
+        modalHeartEl.textContent = product.notes.heart;
+        modalBaseEl.textContent = product.notes.base;
+        window.MaisonZayn.openModal(modalEl);
+      }
+
+      function renderProducts() {
+        const list = getFilteredProducts();
+        gridEl.innerHTML = '';
+
+        countEl.textContent = 'Showing ' + list.length + (list.length === 1 ? ' creation' : ' creations');
+
+        if (list.length === 0) {
+          gridEl.hidden = true;
+          emptyEl.hidden = false;
+          return;
+        }
+
+        gridEl.hidden = false;
+        emptyEl.hidden = true;
+
+        list.forEach(function (product) {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+
+          card.innerHTML =
+            '<div class="product-card__media">' +
+            '  <span class="product-card__badge">' + product.category + '</span>' +
+               window.MaisonZayn.createPerfumeBottleSVG(product) +
+            '</div>' +
+            '<div class="product-card__body">' +
+            '  <div class="product-card__meta">' +
+            '    <h2 class="product-card__title">' + product.name + '</h2>' +
+            '    <span class="product-card__price">$' + product.price + '</span>' +
+            '  </div>' +
+            '  <div class="product-card__sub">' + product.concentration + '</div>' +
+            '  <p class="product-card__desc">' + product.summary + '</p>' +
+            '  <div class="product-card__actions">' +
+            '    <button type="button" class="btn btn-outline" data-details-id="' + product.id + '">Details</button>' +
+            '    <button type="button" class="btn btn-primary" data-add-id="' + product.id + '">Add to Bag</button>' +
+            '  </div>' +
+            '</div>';
+
+          card.querySelector('[data-details-id]').addEventListener('click', function () {
+            openDetailsModal(product);
+          });
+
+          card.querySelector('[data-add-id]').addEventListener('click', function () {
+            window.MaisonZayn.addToBag({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              subtitle: product.concentrationShort
+            });
+          });
+
+          gridEl.appendChild(card);
+        });
+      }
+
+      function resetFilters() {
+        activeCategory = 'ALL';
+        activeSort = 'featured';
+        searchTerm = '';
+        sortSelect.value = 'featured';
+        searchInput.value = '';
+        filterButtons.forEach(function (btn) {
+          const isAll = btn.getAttribute('data-category') === 'ALL';
+          btn.classList.toggle('is-active', isAll);
+          btn.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+        });
+        renderProducts();
+      }
+
+      filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activeCategory = btn.getAttribute('data-category');
+          filterButtons.forEach(function (item) {
+            const active = item === btn;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          renderProducts();
+        });
+      });
+
+      sortSelect.addEventListener('change', function () {
+        activeSort = sortSelect.value;
+        renderProducts();
+      });
+
+      searchInput.addEventListener('input', function () {
+        searchTerm = searchInput.value;
+        renderProducts();
+      });
+
+      resetBtn.addEventListener('click', resetFilters);
+
+      modalEl.addEventListener('click', function (event) {
+        if (event.target === modalEl || event.target.hasAttribute('data-modal-close')) {
+          window.MaisonZayn.closeModal(modalEl);
+        }
+      });
+
+      modalAddBtn.addEventListener('click', function () {
+        if (!activeModalProduct) return;
+        window.MaisonZayn.addToBag({
+          id: activeModalProduct.id,
+          name: activeModalProduct.name,
+          price: activeModalProduct.price,
+          subtitle: activeModalProduct.concentrationShort
+        });
+        window.MaisonZayn.closeModal(modalEl);
+      });
+
+      renderProducts();
+    })();
+  </script>
+</body>
+</html>

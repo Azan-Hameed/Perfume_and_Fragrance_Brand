@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Sets &amp; Discovery Kits | MAISON ZAYN Haute Parfumerie</title>
+  <meta name="description" content="Explore MAISON ZAYN luxury gift coffrets and discovery kits, and calculate gift wrapping, engraving, and complimentary express shipping.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="announcement-bar" role="region" aria-label="Maison announcement">
+    Complimentary <strong>2ml Sample &amp; Free Express Shipping</strong> on all orders over $150
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-logo" aria-label="MAISON ZAYN Home">
+        <span class="brand-logo__title">MAISON ZAYN</span>
+        <span class="brand-logo__sub">Haute Parfumerie</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="gift-sets.html" class="nav-link active" aria-current="page">Gift Sets</a>
+        <a href="contact-branches.html" class="nav-link">Branches</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="bag-trigger" data-open-bag aria-label="Open shopping bag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 7h12l1 13H5L6 7z"></path>
+            <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
+          </svg>
+          <span class="bag-trigger__label">Bag</span>
+          <span class="bag-count" data-bag-count>0</span>
+        </button>
+
+        <button type="button" class="menu-toggle" data-drawer-open aria-label="Open navigation menu" aria-controls="mobile-drawer" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div>
+      <div class="mobile-drawer__head">
+        <span class="mobile-drawer__brand">MAISON ZAYN</span>
+        <button type="button" class="drawer-close" data-drawer-close aria-label="Close navigation menu">&times;</button>
+      </div>
+      <nav aria-label="Mobile links">
+        <ul class="mobile-nav-list">
+          <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+          <li><a href="shop.html" class="mobile-nav-link">Shop</a></li>
+          <li><a href="gift-sets.html" class="mobile-nav-link active" aria-current="page">Gift Sets</a></li>
+          <li><a href="contact-branches.html" class="mobile-nav-link">Branches</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile-drawer__foot">
+      Paris · Dubai · Islamabad · London<br>
+      Concierge: concierge@maisonzayn.com
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <span class="page-hero__eyebrow">THE ART OF GIFTING</span>
+        <h1 id="hero-title" class="page-hero__title">Gift Sets &amp; Discovery Kits</h1>
+        <p class="page-hero__subtitle">
+          Collector trunks, dual fragrance coffrets, and discovery wardrobes crafted for memorable ceremonies and personal exploration.
+        </p>
+        <div class="hero-divider" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="section-pad" aria-label="Curated Gift Sets">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">CURATED COFFRETS</p>
+          <h2 class="section-title">Signature Presentation Sets</h2>
+          <p class="section-lead">
+            Every coffret arrives sealed in gold-embossed Maison Zayn archival packaging with complimentary gift messaging.
+          </p>
+        </div>
+
+        <div id="gift-sets-grid" class="cards-grid"></div>
+
+        <section id="gift-calculator" class="calculator-section" aria-labelledby="calc-heading">
+          <div class="calculator-card">
+            <div>
+              <p class="calculator-card__eyebrow">BESPOKE FINISHING &amp; DELIVERY</p>
+              <h2 id="calc-heading" class="calculator-card__title">Gift &amp; Shipping Calculator</h2>
+              <p class="calculator-card__lead">
+                Customize your atelier presentation and preview your live bag subtotal against our $150 complimentary express shipping &amp; 2ml sample threshold.
+              </p>
+
+              <div class="calc-options" role="group" aria-label="Gift finishing options">
+                <label class="calc-option" for="opt-gift-wrap">
+                  <span class="calc-option__left">
+                    <input id="opt-gift-wrap" type="checkbox" class="calc-option__checkbox" data-option-price="12">
+                    <span>
+                      <span class="calc-option__name">Couture Silk Ribbon &amp; Wax Seal</span>
+                      <span class="calc-option__desc">Hand-tied raw silk ribbon with brass-stamped Maison Zayn wax crest.</span>
+                    </span>
+                  </span>
+                  <span class="calc-option__price">+$12</span>
+                </label>
+
+                <label class="calc-option" for="opt-engraving">
+                  <span class="calc-option__left">
+                    <input id="opt-engraving" type="checkbox" class="calc-option__checkbox" data-option-price="20">
+                    <span>
+                      <span class="calc-option__name">Gold-Leaf Flacon Engraving</span>
+                      <span class="calc-option__desc">Up to 3 hand-engraved initials filled in 24k gold pigment.</span>
+                    </span>
+                  </span>
+                  <span class="calc-option__price">+$20</span>
+                </label>
+
+                <div id="engraving-field" class="engraving-input-wrap" hidden>
+                  <label for="engraving-initials">Monogram Initials (Max 3 Characters)</label>
+                  <input id="engraving-initials" type="text" maxlength="3" class="engraving-input" placeholder="e.g. M.Z">
+                </div>
+
+                <label class="calc-option" for="opt-calligraphy">
+                  <span class="calc-option__left">
+                    <input id="opt-calligraphy" type="checkbox" class="calc-option__checkbox" data-option-price="0" checked>
+                    <span>
+                      <span class="calc-option__name">Handwritten Calligraphy Card</span>
+                      <span class="calc-option__desc">Heavy cotton ivory card inscribed by our salon atelier.</span>
+                    </span>
+                  </span>
+                  <span class="calc-option__price">Complimentary</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="calc-summary" aria-live="polite">
+              <h3 class="calc-summary__title">Order Privilege Summary</h3>
+
+              <div id="shipping-status-box" class="shipping-status">
+                <p id="shipping-status-text" class="shipping-status__text"></p>
+                <div class="progress-track" aria-hidden="true">
+                  <div id="shipping-progress-fill" class="progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="calc-breakdown">
+                <div class="calc-row">
+                  <span>Bag Subtotal (<span id="calc-item-count">0</span> items)</span>
+                  <strong id="calc-subtotal">$0.00</strong>
+                </div>
+                <div class="calc-row calc-row--muted">
+                  <span>Gift Wrapping &amp; Engraving</span>
+                  <span id="calc-options-total">$0.00</span>
+                </div>
+                <div class="calc-row calc-row--muted">
+                  <span>Express Courier Shipping</span>
+                  <span id="calc-shipping-cost">$18.00</span>
+                </div>
+                <div class="calc-row calc-row--muted">
+                  <span>Complimentary 2ml Sample</span>
+                  <span id="calc-sample-status">Unlocks over $150</span>
+                </div>
+              </div>
+
+              <div class="calc-total">
+                <span>Estimated Total</span>
+                <span id="calc-grand-total">$18.00</span>
+              </div>
+
+              <div class="calc-actions">
+                <button type="button" class="btn btn-primary" data-open-bag style="flex: 1;">Review Bag</button>
+                <a href="shop.html" class="btn btn-outline" style="flex: 1;">Browse Fragrances</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="gift-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-gift-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close gift set details">&times;</button>
+      <div class="modal-body">
+        <div id="modal-gift-visual" class="modal-visual"></div>
+        <div>
+          <span id="modal-gift-eyebrow" class="modal-eyebrow"></span>
+          <h2 id="modal-gift-title" class="modal-title"></h2>
+          <div id="modal-gift-price" class="modal-price"></div>
+          <p id="modal-gift-desc" class="modal-desc"></p>
+
+          <div class="notes-list" aria-label="Coffret contents">
+            <div class="notes-list__row"><strong>Contents</strong> <span id="modal-gift-contents"></span></div>
+            <div class="notes-list__row"><strong>Profile</strong> <span id="modal-gift-profile"></span></div>
+            <div class="notes-list__row"><strong>Finish</strong> <span id="modal-gift-finish"></span></div>
+          </div>
+
+          <button type="button" id="modal-gift-add" class="btn btn-primary" style="width: 100%;">Add to Bag</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand__name">MAISON ZAYN</div>
+          <p class="footer-brand__copy">
+            Contemporary haute parfumerie bridging Parisian craftsmanship and timeless Oriental resins.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Collections</h2>
+          <ul class="footer-links">
+            <li><a href="shop.html">Shop All Creations</a></li>
+            <li><a href="gift-sets.html">Gift Sets &amp; Discovery Kits</a></li>
+            <li><a href="../index.html">Maison Heritage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Flagship Salons</h2>
+          <ul class="footer-links">
+            <li><a href="contact-branches.html">Paris · Rue Saint-Honoré</a></li>
+            <li><a href="contact-branches.html">Dubai · Dubai Mall</a></li>
+            <li><a href="contact-branches.html">Islamabad · F-7 Markaz</a></li>
+            <li><a href="contact-branches.html">London · Mayfair</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">Client Concierge</h2>
+          <ul class="footer-links">
+            <li><a href="contact-branches.html#consultation-form">Book Private Consultation</a></li>
+            <li><a href="gift-sets.html#gift-calculator">Gift &amp; Shipping Calculator</a></li>
+            <li>concierge@maisonzayn.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 MAISON ZAYN. All rights reserved.</span>
+        <span>Complimentary 2ml Sample &amp; Free Express Shipping Over $150</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const GIFT_SETS = [
+        {
+          id: 'la-collection-royale-trunk',
+          name: 'La Collection Royale Trunk',
+          shortLabel: 'ROYALE TRUNK',
+          variant: 'trunk',
+          badge: 'COLLECTOR EDITION',
+          subtitle: '3 × 100ml Extraits · Walnut & Brass Trunk',
+          price: 336,
+          summary: 'Three full-size signature extraits housed in an heirloom walnut and brushed-brass presentation trunk.',
+          story: 'Designed as a permanent dressing-table jewel case, La Collection Royale Trunk unites Oudh Imperial, Rose Ispahan, and Santal de Grasse with a numbered brass plaque.',
+          contents: 'Oudh Imperial (100ml), Rose Ispahan (100ml), Santal de Grasse (100ml)',
+          profile: 'Oudh, Velvet Floral & Creamy Sandalwood Wardrobe',
+          finish: 'Satin-lined walnut trunk, brass clasp, velvet travel pouch',
+          accentColor: '#C19A4F'
+        },
+        {
+          id: 'le-coffret-decouverte',
+          name: 'Le Coffret Découverte',
+          shortLabel: 'COFFRET DÉCOUVERTE',
+          variant: 'discovery',
+          badge: 'DISCOVERY KIT',
+          subtitle: '6 × 5ml Atomizers · $45 Flacon Credit',
+          price: 45,
+          summary: 'Explore all six Maison Zayn creations in travel glass atomizers, complete with a $45 voucher toward your next full bottle.',
+          story: 'An unhurried ritual across six distinct olfactory portraits so you can live with each extrait on skin from morning citrus to evening oudh.',
+          contents: '6 × 5ml sprays: Oudh Imperial, Santal de Grasse, Rose Ispahan, Musc Blanc, Vétiver & Cuir, Bergamote Sauvage',
+          profile: 'Complete Maison Signature Spectrum',
+          finish: 'Obsidian textured keepsake drawer box with scent cards',
+          accentColor: '#D4B06A'
+        },
+        {
+          id: 'duo-paris-orient',
+          name: 'Duo Paris-Orient',
+          shortLabel: 'DUO PARIS-ORIENT',
+          variant: 'duo',
+          badge: 'SIGNATURE PAIRING',
+          subtitle: '2 × 100ml · Rose Ispahan & Oudh Imperial',
+          price: 235,
+          summary: 'Our iconic layering pairing uniting luminous Damask rose with smoky Cambodian oudh in an ivory-and-gold coffret.',
+          story: 'Crafted to be worn solo or layered together, Duo Paris-Orient celebrates the dialogue between French floral perfumery and Eastern resinous depth.',
+          contents: 'Rose Ispahan (100ml) + Oudh Imperial (100ml)',
+          profile: 'Amber-Floral & Resinous Oudh Layering Duo',
+          finish: 'Ivory archival presentation box with gold foil crest',
+          accentColor: '#C19A4F'
+        }
+      ];
+
+      const FREE_SHIPPING_THRESHOLD = 150;
+      const STANDARD_EXPRESS_SHIPPING = 18;
+
+      const gridEl = document.getElementById('gift-sets-grid');
+      const modalEl = document.getElementById('gift-modal');
+      const modalVisualEl = document.getElementById('modal-gift-visual');
+      const modalEyebrowEl = document.getElementById('modal-gift-eyebrow');
+      const modalTitleEl = document.getElementById('modal-gift-title');
+      const modalPriceEl = document.getElementById('modal-gift-price');
+      const modalDescEl = document.getElementById('modal-gift-desc');
+      const modalContentsEl = document.getElementById('modal-gift-contents');
+      const modalProfileEl = document.getElementById('modal-gift-profile');
+      const modalFinishEl = document.getElementById('modal-gift-finish');
+      const modalAddBtn = document.getElementById('modal-gift-add');
+
+      const optWrap = document.getElementById('opt-gift-wrap');
+      const optEngraving = document.getElementById('opt-engraving');
+      const optCalligraphy = document.getElementById('opt-calligraphy');
+      const engravingField = document.getElementById('engraving-field');
+      const engravingInitials = document.getElementById('engraving-initials');
+
+      const statusBoxEl = document.getElementById('shipping-status-box');
+      const statusTextEl = document.getElementById('shipping-status-text');
+      const progressFillEl = document.getElementById('shipping-progress-fill');
+      const itemCountEl = document.getElementById('calc-item-count');
+      const subtotalEl = document.getElementById('calc-subtotal');
+      const optionsTotalEl = document.getElementById('calc-options-total');
+      const shippingCostEl = document.getElementById('calc-shipping-cost');
+      const sampleStatusEl = document.getElementById('calc-sample-status');
+      const grandTotalEl = document.getElementById('calc-grand-total');
+
+      let activeModalGift = null;
+
+      function openGiftModal(gift) {
+        activeModalGift = gift;
+        modalVisualEl.innerHTML = window.MaisonZayn.createGiftBoxSVG(gift);
+        modalEyebrowEl.textContent = gift.badge + ' · ' + gift.subtitle;
+        modalTitleEl.textContent = gift.name;
+        modalPriceEl.textContent = '$' + gift.price;
+        modalDescEl.textContent = gift.story;
+        modalContentsEl.textContent = gift.contents;
+        modalProfileEl.textContent = gift.profile;
+        modalFinishEl.textContent = gift.finish;
+        window.MaisonZayn.openModal(modalEl);
+      }
+
+      function renderGiftSets() {
+        gridEl.innerHTML = '';
+
+        GIFT_SETS.forEach(function (gift) {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+
+          card.innerHTML =
+            '<div class="product-card__media">' +
+            '  <span class="product-card__badge">' + gift.badge + '</span>' +
+               window.MaisonZayn.createGiftBoxSVG(gift) +
+            '</div>' +
+            '<div class="product-card__body">' +
+            '  <div class="product-card__meta">' +
+            '    <h3 class="product-card__title">' + gift.name + '</h3>' +
+            '    <span class="product-card__price">$' + gift.price + '</span>' +
+            '  </div>' +
+            '  <div class="product-card__sub">' + gift.subtitle + '</div>' +
+            '  <p class="product-card__desc">' + gift.summary + '</p>' +
+            '  <div class="product-card__actions">' +
+            '    <button type="button" class="btn btn-outline" data-gift-details="' + gift.id + '">Details</button>' +
+            '    <button type="button" class="btn btn-primary" data-gift-add="' + gift.id + '">Add to Bag</button>' +
+            '  </div>' +
+            '</div>';
+
+          card.querySelector('[data-gift-details]').addEventListener('click', function () {
+            openGiftModal(gift);
+          });
+
+          card.querySelector('[data-gift-add]').addEventListener('click', function () {
+            window.MaisonZayn.addToBag({
+              id: gift.id,
+              name: gift.name,
+              price: gift.price,
+              subtitle: gift.badge
+            });
+          });
+
+          gridEl.appendChild(card);
+        });
+      }
+
+      function updateOptionVisuals() {
+        [optWrap, optEngraving, optCalligraphy].forEach(function (checkbox) {
+          const wrapper = checkbox.closest('.calc-option');
+          if (wrapper) {
+            wrapper.classList.toggle('is-checked', checkbox.checked);
+          }
+        });
+        engravingField.hidden = !optEngraving.checked;
+      }
+
+      function calculateGiftAndShipping() {
+        updateOptionVisuals();
+
+        const cartCount = window.MaisonZayn.getCartCount();
+        const cartSubtotal = window.MaisonZayn.getCartSubtotal();
+
+        let optionsTotal = 0;
+        [optWrap, optEngraving, optCalligraphy].forEach(function (checkbox) {
+          if (checkbox.checked) {
+            optionsTotal += Number(checkbox.getAttribute('data-option-price')) || 0;
+          }
+        });
+
+        const qualifiesFreeExpress = cartSubtotal > FREE_SHIPPING_THRESHOLD;
+        const shippingCost = qualifiesFreeExpress ? 0 : STANDARD_EXPRESS_SHIPPING;
+        const grandTotal = cartSubtotal + optionsTotal + shippingCost;
+        const progressPercent = Math.min(100, Math.round((cartSubtotal / (FREE_SHIPPING_THRESHOLD + 0.01)) * 100));
+
+        statusBoxEl.classList.toggle('is-unlocked', qualifiesFreeExpress);
+        progressFillEl.style.width = (qualifiesFreeExpress ? 100 : progressPercent) + '%';
+
+        if (qualifiesFreeExpress) {
+          statusTextEl.textContent =
+            'Unlocked: Your bag qualifies for a complimentary 2ml sample and Free Express Shipping!';
+        } else if (cartSubtotal === 0) {
+          statusTextEl.textContent =
+            'Your bag is empty. Add over $150.00 to unlock a complimentary 2ml sample & Free Express Shipping.';
+        } else {
+          const amountNeeded = Math.max(0.01, (FREE_SHIPPING_THRESHOLD + 0.01) - cartSubtotal);
+          statusTextEl.textContent =
+            'Add $' + amountNeeded.toFixed(2) + ' more to unlock your complimentary 2ml sample & Free Express Shipping (orders over $150).';
+        }
+
+        itemCountEl.textContent = String(cartCount);
+        subtotalEl.textContent = '$' + cartSubtotal.toFixed(2);
+        optionsTotalEl.textContent = '$' + optionsTotal.toFixed(2);
+        shippingCostEl.textContent = qualifiesFreeExpress ? 'Complimentary ($0.00)' : '$' + shippingCost.toFixed(2);
+        sampleStatusEl.textContent = qualifiesFreeExpress ? 'Included (2ml Atelier Vial)' : 'Unlocks over $150';
+        grandTotalEl.textContent = '$' + grandTotal.toFixed(2);
+      }
+
+      [optWrap, optEngraving, optCalligraphy].forEach(function (checkbox) {
+        checkbox.addEventListener('change', calculateGiftAndShipping);
+      });
+
+      engravingInitials.addEventListener('input', function () {
+        engravingInitials.value = engravingInitials.value.toUpperCase().replace(/[^A-Z0-9.]/g, '');
+      });
+
+      modalEl.addEventListener('click', function (event) {
+        if (event.target === modalEl || event.target.hasAttribute('data-modal-close')) {
+          window.MaisonZayn.closeModal(modalEl);
+        }
+      });
+
+      modalAddBtn.addEventListener('click', function () {
+        if (!activeModalGift) return;
+        window.MaisonZayn.addToBag({
+          id: activeModalGift.id,
+          name: activeModalGift.name,
+          price: activeModalGift.price,
+          subtitle: activeModalGift.badge
+        });
+        window.MaisonZayn.closeModal(modalEl);
+      });
+
+      window.addEventListener('mz:cart-updated', calculateGiftAndShipping);
+      window.addEventListener('storage', calculateGiftAndShipping);
+
+      renderGiftSets();
+      calculateGiftAndShipping();
+    })();
+  </script>
+</body>
+</html>
