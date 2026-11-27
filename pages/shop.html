@@ -14,7 +14,7 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="announcement-bar" role="region" aria-label="Maison announcement">
-    Complimentary <strong>2ml Sample &amp; Free Express Shipping</strong> on all orders over $150
+    Complimentary <strong>2ml Sample &amp; Free Express Shipping</strong> on all orders over PKR 40,000
   </div>
 
   <header class="site-header">
@@ -195,7 +195,7 @@
 
       <div class="footer-bottom">
         <span>&copy; 2026 MAISON ZAYN. All rights reserved.</span>
-        <span>Complimentary 2ml Sample &amp; Free Express Shipping Over $150</span>
+        <span>Complimentary 2ml Sample &amp; Free Express Shipping Over PKR 40,000</span>
       </div>
     </div>
   </footer>
@@ -211,7 +211,7 @@
           name: 'Oudh Imperial',
           shortLabel: 'OUDH IMPERIAL',
           category: 'OUDH',
-          price: 145,
+          price: 40000,
           concentration: 'Extrait de Parfum · 100ml',
           concentrationShort: 'EXTRAIT · 100ML',
           summary: 'Smoked Cambodian oudh draped in crimson saffron and warm ambergris.',
@@ -229,7 +229,7 @@
           name: 'Santal de Grasse',
           shortLabel: 'SANTAL DE GRASSE',
           category: 'WOODY',
-          price: 115,
+          price: 31800,
           concentration: 'Eau de Parfum · 100ml',
           concentrationShort: 'EDP · 100ML',
           summary: 'Creamy Mysore sandalwood folded into powdery Florentine iris and cedar.',
@@ -247,7 +247,7 @@
           name: 'Rose Ispahan',
           shortLabel: 'ROSE ISPAHAN',
           category: 'FLORAL',
-          price: 120,
+          price: 33200,
           concentration: 'Extrait de Parfum · 100ml',
           concentrationShort: 'EXTRAIT · 100ML',
           summary: 'Dewy Centifolia and Damask roses lifted by lychee and dark patchouli.',
@@ -265,7 +265,7 @@
           name: 'Musc Blanc',
           shortLabel: 'MUSC BLANC',
           category: 'FRESH',
-          price: 110,
+          price: 30400,
           concentration: 'Eau de Parfum · 100ml',
           concentrationShort: 'EDP · 100ML',
           summary: 'Clean linen aldehydes, white pear, and weightless cashmere skin musk.',
@@ -283,7 +283,7 @@
           name: 'Vétiver & Cuir',
           shortLabel: 'VÉTIVER & CUIR',
           category: 'WOODY',
-          price: 115,
+          price: 31800,
           concentration: 'Eau de Parfum · 100ml',
           concentrationShort: 'EDP · 100ML',
           summary: 'Earthy Haitian vetiver anchored by supple Tuscan suede and bitter orange.',
@@ -301,7 +301,7 @@
           name: 'Bergamote Sauvage',
           shortLabel: 'BERGAMOTE SAUVAGE',
           category: 'FRESH',
-          price: 100,
+          price: 27600,
           concentration: 'Eau de Parfum · 100ml',
           concentrationShort: 'EDP · 100ML',
           summary: 'Sparkling Calabrian bergamot, sun-warmed neroli, and mineral cedar.',
@@ -374,7 +374,7 @@
         modalBottleEl.innerHTML = window.MaisonZayn.createPerfumeBottleSVG(product);
         modalCategoryEl.textContent = product.category + ' · ' + product.concentration;
         modalTitleEl.textContent = product.name;
-        modalPriceEl.textContent = '$' + product.price;
+        modalPriceEl.textContent = window.MaisonZayn.formatPKR(product.price);
         modalDescEl.textContent = product.story;
         modalTopEl.textContent = product.notes.top;
         modalHeartEl.textContent = product.notes.heart;
@@ -409,7 +409,7 @@
             '<div class="product-card__body">' +
             '  <div class="product-card__meta">' +
             '    <h2 class="product-card__title">' + product.name + '</h2>' +
-            '    <span class="product-card__price">$' + product.price + '</span>' +
+            '    <span class="product-card__price">' + window.MaisonZayn.formatPKR(product.price) + '</span>' +
             '  </div>' +
             '  <div class="product-card__sub">' + product.concentration + '</div>' +
             '  <p class="product-card__desc">' + product.summary + '</p>' +

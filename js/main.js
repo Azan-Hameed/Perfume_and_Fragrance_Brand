@@ -5,7 +5,13 @@
   'use strict';
 
   const CART_KEY = 'maison_zayn_bag';
+  const FREE_SHIPPING_THRESHOLD = 40000;
   let lastFocusedElement = null;
+
+  function formatPKR(amount) {
+    const num = Math.round(Number(amount) || 0);
+    return 'PKR ' + num.toLocaleString('en-US');
+  }
 
   /* --------------------------------------------------------------------------
      Cart & LocalStorage Helpers
@@ -168,8 +174,8 @@
 
     const cart = getCart();
     const subtotal = getCartSubtotal();
-    const qualifies = subtotal > 150;
-    const remaining = Math.max(0, 150.01 - subtotal);
+    const qualifies = subtotal >= FREE_SHIPPING_THRESHOLD;
+    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
 
     body.innerHTML = '';
 
@@ -200,7 +206,7 @@
       title.textContent = item.name;
       const meta = document.createElement('div');
       meta.className = 'bag-item__meta';
-      meta.textContent = '$' + item.price.toFixed(0) + (item.subtitle ? ' · ' + item.subtitle : '');
+      meta.textContent = formatPKR(item.price) + (item.subtitle ? ' · ' + item.subtitle : '');
       info.appendChild(title);
       info.appendChild(meta);
 
@@ -246,11 +252,11 @@
     const summary = document.createElement('div');
     summary.className = 'calc-breakdown';
     summary.innerHTML =
-      '<div class="calc-row"><span>Bag Subtotal</span><strong>$' + subtotal.toFixed(2) + '</strong></div>' +
+      '<div class="calc-row"><span>Bag Subtotal</span><strong>' + formatPKR(subtotal) + '</strong></div>' +
       '<div class="calc-row calc-row--muted"><span>Express Shipping &amp; 2ml Sample</span><span>' +
       (qualifies
-        ? 'Complimentary ($0.00)'
-        : '$' + remaining.toFixed(2) + ' away from Free Express') +
+        ? 'Complimentary (' + formatPKR(0) + ')'
+        : formatPKR(remaining) + ' away from Free Express') +
       '</span></div>';
     body.appendChild(summary);
 
@@ -487,6 +493,8 @@
   });
 
   window.MaisonZayn = {
+    FREE_SHIPPING_THRESHOLD: FREE_SHIPPING_THRESHOLD,
+    formatPKR: formatPKR,
     getCart: getCart,
     saveCart: saveCart,
     addToBag: addToBag,
