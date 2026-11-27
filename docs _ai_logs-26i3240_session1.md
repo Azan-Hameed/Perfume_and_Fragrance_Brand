@@ -153,4 +153,3 @@
 [INSTALL] Using cached binary version v1.5.18 (skipping version check).
 [INSTALL] Starting existing binary v1.5.18; release check is fresh (checked within the last 12h).
 [LAUNCH] Spawning C:\Users\RC\.gemini\bin\agy.exe (v1.5.18) --hub --hub-port=61641 --app_data_dir=antigravity
-
