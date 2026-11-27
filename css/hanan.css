@@ -1,0 +1,244 @@
+/* ==========================================================================
+   MAISON ZAYN — Unisex Collection Extra Styles (Hanan / 26i-3238)
+   Extends css/style.css without duplicating shared design tokens/components
+   ========================================================================== */
+
+.unisex-section-header {
+  margin-bottom: 36px;
+}
+
+/* Search + Filter Toolbar */
+.unisex-toolbar {
+  gap: 20px;
+}
+
+.unisex-search-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.unisex-search-wrap {
+  position: relative;
+  min-width: 290px;
+  flex: 1 1 320px;
+}
+
+.unisex-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.unisex-search-input {
+  width: 100%;
+  padding-left: 42px;
+  padding-right: 14px;
+}
+
+.unisex-result-count {
+  font-size: 12.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Bootstrap Grid + Shared Product Card Alignment */
+#unisex-product-grid .product-card {
+  height: 100%;
+}
+
+.unisex-card__price {
+  font-size: 22px;
+}
+
+/* Empty State */
+.unisex-empty-state {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 56px 32px;
+  text-align: center;
+  max-width: 640px;
+  margin: 24px auto 0;
+}
+
+.unisex-empty-state__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 500;
+  color: var(--color-ink);
+  margin: 10px 0 12px;
+}
+
+.unisex-empty-state__desc {
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+/* Bootstrap 5 Notes Modal Integration with css/style.css */
+.modal-backdrop.fade.show {
+  opacity: 0.65;
+  visibility: visible;
+  z-index: 1500;
+}
+
+#notesModal.modal {
+  z-index: 1550;
+}
+
+#notesModal .modal-dialog {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  max-height: none;
+  overflow-y: visible;
+  transform: none;
+}
+
+.unisex-modal-content {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 12px 14px;
+  box-shadow: 0 28px 64px rgba(17, 17, 17, 0.28);
+}
+
+.unisex-modal-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 20px 24px 16px;
+}
+
+.unisex-modal-title {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.2vw, 38px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-ink);
+  margin-top: 6px;
+}
+
+.unisex-modal-close {
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.unisex-modal-body {
+  padding: 24px;
+}
+
+.unisex-modal-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.unisex-modal-visual {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unisex-modal-story {
+  font-size: 15.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+}
+
+.notes-pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notes-tier {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.notes-tier__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-gold);
+  margin-bottom: 4px;
+}
+
+.notes-tier__items {
+  font-size: 15px;
+  color: var(--color-ink);
+  font-weight: 400;
+}
+
+.unisex-modal-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 16px 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.unisex-modal-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.unisex-modal-size {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.unisex-modal-price {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.unisex-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .unisex-search-wrap {
+    min-width: 100%;
+  }
+
+  .unisex-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .unisex-modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .unisex-modal-actions {
+    width: 100%;
+  }
+
+  .unisex-modal-actions .btn {
+    flex: 1;
+  }
+}
