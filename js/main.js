@@ -1089,3 +1089,414 @@
     initReveal();
   });
 })();
+
+/* ===== PAGE: LOGIN ===== */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const panel = document.getElementById("login-panel");
+    if (!panel) return;
+
+    const USER_STORAGE_KEY = "maisonzayn_user";
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const screens = {
+      login: document.getElementById("screen-login"),
+      signup: document.getElementById("screen-signup"),
+      forgot: document.getElementById("screen-forgot"),
+      success: document.getElementById("screen-success")
+    };
+
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const forgotForm = document.getElementById("forgot-form");
+
+    const loginStatus = document.getElementById("login-status-box");
+    const signupStatus = document.getElementById("signup-status-box");
+    const forgotStatus = document.getElementById("forgot-status-box");
+
+    let signupRedirectTimer = null;
+
+    function clearFieldError(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const errorEl = document.getElementById(errorId);
+      if (input) {
+        input.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+      }
+      if (errorEl) {
+        errorEl.textContent = "";
+      }
+    }
+
+    function setFieldError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const errorEl = document.getElementById(errorId);
+      if (input) {
+        input.classList.add("is-invalid");
+        input.setAttribute("aria-invalid", "true");
+      }
+      if (errorEl) {
+        errorEl.textContent = message;
+      }
+    }
+
+    function clearAllErrors() {
+      panel.querySelectorAll(".login-input").forEach((input) => {
+        input.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+      });
+      panel.querySelectorAll(".login-error").forEach((err) => {
+        err.textContent = "";
+      });
+    }
+
+    function showScreen(name, options = {}) {
+      if (signupRedirectTimer) {
+        clearTimeout(signupRedirectTimer);
+        signupRedirectTimer = null;
+      }
+
+      Object.entries(screens).forEach(([key, el]) => {
+        if (!el) return;
+        el.hidden = key !== name;
+      });
+
+      clearAllErrors();
+
+      if (!options.preserveLoginStatus && loginStatus) {
+        loginStatus.hidden = true;
+        loginStatus.textContent = "";
+      }
+      if (signupStatus) {
+        signupStatus.hidden = true;
+        signupStatus.textContent = "";
+      }
+      if (forgotStatus) {
+        forgotStatus.hidden = true;
+        forgotStatus.textContent = "";
+      }
+
+      const activeScreen = screens[name];
+      if (activeScreen) {
+        const focusTarget =
+          activeScreen.querySelector("input") ||
+          activeScreen.querySelector("a, button");
+        if (focusTarget && !options.skipFocus) {
+          focusTarget.focus();
+        }
+      }
+    }
+
+    // Tab and navigation switches
+    panel.querySelectorAll("[data-switch-screen]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.switchScreen;
+        if (target && screens[target]) {
+          showScreen(target);
+        }
+      });
+    });
+
+    // Password show/hide toggles
+    panel.querySelectorAll("[data-toggle-password]").forEach((toggleBtn) => {
+      toggleBtn.addEventListener("click", () => {
+        const targetId = toggleBtn.dataset.togglePassword;
+        const input = document.getElementById(targetId);
+        if (!input) return;
+        const isHidden = input.type === "password";
+        input.type = isHidden ? "text" : "password";
+        toggleBtn.setAttribute("aria-pressed", String(isHidden));
+        toggleBtn.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
+        const eyeOpen = toggleBtn.querySelector("[data-eye-open]");
+        const eyeClosed = toggleBtn.querySelector("[data-eye-closed]");
+        if (eyeOpen && eyeClosed) {
+          eyeOpen.hidden = isHidden;
+          eyeClosed.hidden = !isHidden;
+        }
+      });
+    });
+
+    // Clear errors as user types
+    const fieldBindings = [
+      ["login-email", "login-email-error"],
+      ["login-password", "login-password-error"],
+      ["signup-name", "signup-name-error"],
+      ["signup-email", "signup-email-error"],
+      ["signup-password", "signup-password-error"],
+      ["signup-confirm", "signup-confirm-error"],
+      ["forgot-email", "forgot-email-error"]
+    ];
+    fieldBindings.forEach(([inputId, errorId]) => {
+      const el = document.getElementById(inputId);
+      if (el) {
+        el.addEventListener("input", () => clearFieldError(inputId, errorId));
+      }
+    });
+
+    // Screen 1: Login submit
+    if (loginForm) {
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailVal = (document.getElementById("login-email")?.value || "").trim();
+        const pwVal = document.getElementById("login-password")?.value || "";
+        let valid = true;
+
+        clearFieldError("login-email", "login-email-error");
+        clearFieldError("login-password", "login-password-error");
+
+        if (!emailVal) {
+          setFieldError("login-email", "login-email-error", "Please enter your email address.");
+          valid = false;
+        } else if (!EMAIL_REGEX.test(emailVal)) {
+          setFieldError("login-email", "login-email-error", "Please enter a valid email address.");
+          valid = false;
+        }
+
+        if (!pwVal) {
+          setFieldError("login-password", "login-password-error", "Please enter your password.");
+          valid = false;
+        } else if (pwVal.length < 6) {
+          setFieldError("login-password", "login-password-error", "Password must be at least 6 characters.");
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        // Demo-only flag; never store passwords
+        try {
+          localStorage.setItem(
+            USER_STORAGE_KEY,
+            JSON.stringify({ signedIn: true, email: emailVal })
+          );
+        } catch {
+          // Ignore storage quota / privacy-mode errors
+        }
+
+        showScreen("success");
+      });
+    }
+
+    // Screen 2: Sign Up submit
+    if (signupForm) {
+      signupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nameVal = (document.getElementById("signup-name")?.value || "").trim();
+        const emailVal = (document.getElementById("signup-email")?.value || "").trim();
+        const pwVal = document.getElementById("signup-password")?.value || "";
+        const confirmVal = document.getElementById("signup-confirm")?.value || "";
+        let valid = true;
+
+        clearFieldError("signup-name", "signup-name-error");
+        clearFieldError("signup-email", "signup-email-error");
+        clearFieldError("signup-password", "signup-password-error");
+        clearFieldError("signup-confirm", "signup-confirm-error");
+
+        if (!nameVal) {
+          setFieldError("signup-name", "signup-name-error", "Please enter your full name.");
+          valid = false;
+        }
+
+        if (!emailVal) {
+          setFieldError("signup-email", "signup-email-error", "Please enter your email address.");
+          valid = false;
+        } else if (!EMAIL_REGEX.test(emailVal)) {
+          setFieldError("signup-email", "signup-email-error", "Please enter a valid email address.");
+          valid = false;
+        }
+
+        if (!pwVal) {
+          setFieldError("signup-password", "signup-password-error", "Please create a password.");
+          valid = false;
+        } else if (pwVal.length < 6) {
+          setFieldError("signup-password", "signup-password-error", "Password must be at least 6 characters.");
+          valid = false;
+        }
+
+        if (!confirmVal) {
+          setFieldError("signup-confirm", "signup-confirm-error", "Please confirm your password.");
+          valid = false;
+        } else if (confirmVal !== pwVal) {
+          setFieldError("signup-confirm", "signup-confirm-error", "Passwords do not match.");
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        if (signupStatus) {
+          signupStatus.textContent = "Account created! Returning to login…";
+          signupStatus.hidden = false;
+        }
+
+        const loginEmailInput = document.getElementById("login-email");
+        if (loginEmailInput) loginEmailInput.value = emailVal;
+        signupForm.reset();
+
+        signupRedirectTimer = setTimeout(() => {
+          if (loginStatus) {
+            loginStatus.textContent = "Account created. Please login with your email.";
+            loginStatus.hidden = false;
+          }
+          showScreen("login", { preserveLoginStatus: true });
+        }, 1200);
+      });
+    }
+
+    // Screen 3: Forgot Password submit
+    if (forgotForm) {
+      forgotForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailVal = (document.getElementById("forgot-email")?.value || "").trim();
+
+        clearFieldError("forgot-email", "forgot-email-error");
+
+        if (!emailVal) {
+          setFieldError("forgot-email", "forgot-email-error", "Please enter your email address.");
+          return;
+        }
+        if (!EMAIL_REGEX.test(emailVal)) {
+          setFieldError("forgot-email", "forgot-email-error", "Please enter a valid email address.");
+          return;
+        }
+
+        if (forgotStatus) {
+          forgotStatus.textContent = "Link sent! Check your email";
+          forgotStatus.hidden = false;
+        }
+      });
+    }
+
+    showScreen("login", { skipFocus: true });
+  });
+})();
+/* ===== END PAGE: LOGIN ===== */
+
+/* ===== PAGE: NEW-SALE ===== */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const toolbar = document.getElementById("new-sale-toolbar");
+    const newArrivalsSection = document.getElementById("new-arrivals-section");
+    const archiveSaleSection = document.getElementById("archive-sale-section");
+    const newArrivalsGrid = document.getElementById("new-arrivals-grid");
+    const archiveSaleGrid = document.getElementById("archive-sale-grid");
+    const sortSelect = document.getElementById("new-sale-sort");
+    if (!toolbar || !newArrivalsGrid || !archiveSaleGrid) return;
+
+    const filterChips = toolbar.querySelectorAll("[data-new-sale-filter]");
+    let activeFilter = "all";
+    let activeSort = "featured";
+
+    function stampCards(grid) {
+      Array.from(grid.children).forEach((card, idx) => {
+        if (!card.dataset.featuredOrder) {
+          card.dataset.featuredOrder = String(idx);
+        }
+        const priceEl = card.querySelector(".product-card__price");
+        if (priceEl && !card.dataset.priceValue) {
+          const num = parseFloat(priceEl.textContent.replace(/[^0-9.]/g, "")) || 0;
+          card.dataset.priceValue = String(num);
+        }
+      });
+    }
+
+    function sortGrid(grid) {
+      stampCards(grid);
+      const cards = Array.from(grid.children);
+      cards.sort((a, b) => {
+        if (activeSort === "price-asc") {
+          return Number(a.dataset.priceValue) - Number(b.dataset.priceValue);
+        }
+        if (activeSort === "price-desc") {
+          return Number(b.dataset.priceValue) - Number(a.dataset.priceValue);
+        }
+        return Number(a.dataset.featuredOrder) - Number(b.dataset.featuredOrder);
+      });
+      cards.forEach((card) => grid.appendChild(card));
+    }
+
+    function applyFilterAndSort() {
+      const showNew = activeFilter === "all" || activeFilter === "new";
+      const showSale = activeFilter === "all" || activeFilter === "sale";
+
+      if (newArrivalsSection) {
+        newArrivalsSection.hidden = !showNew;
+        if (showNew) newArrivalsSection.classList.add("is-visible");
+      }
+      if (archiveSaleSection) {
+        archiveSaleSection.hidden = !showSale;
+        if (showSale) archiveSaleSection.classList.add("is-visible");
+      }
+
+      sortGrid(newArrivalsGrid);
+      sortGrid(archiveSaleGrid);
+    }
+
+    filterChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        filterChips.forEach((c) => {
+          c.classList.remove("is-active");
+          c.setAttribute("aria-pressed", "false");
+        });
+        chip.classList.add("is-active");
+        chip.setAttribute("aria-pressed", "true");
+        activeFilter = chip.dataset.newSaleFilter || "all";
+        applyFilterAndSort();
+      });
+    });
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", (e) => {
+        activeSort = e.target.value;
+        applyFilterAndSort();
+      });
+    }
+
+    stampCards(newArrivalsGrid);
+    stampCards(archiveSaleGrid);
+  });
+})();
+/* ===== END PAGE: NEW-SALE ===== */
+
+/* ===== PAGE: FAQ-SHIPPING ===== */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordion = document.getElementById("shipping-faq-list");
+    if (!accordion) return;
+
+    const triggers = Array.from(accordion.querySelectorAll(".faq-trigger"));
+
+    function syncOpenPanels() {
+      accordion.querySelectorAll(".faq-item.is-open .faq-panel").forEach((panel) => {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      });
+    }
+
+    syncOpenPanels();
+    window.addEventListener("resize", syncOpenPanels);
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener("keydown", (e) => {
+        let nextIdx = null;
+        if (e.key === "ArrowDown") {
+          nextIdx = (index + 1) % triggers.length;
+        } else if (e.key === "ArrowUp") {
+          nextIdx = (index - 1 + triggers.length) % triggers.length;
+        } else if (e.key === "Home") {
+          nextIdx = 0;
+        } else if (e.key === "End") {
+          nextIdx = triggers.length - 1;
+        }
+        if (nextIdx !== null) {
+          e.preventDefault();
+          triggers[nextIdx].focus();
+        }
+      });
+    });
+  });
+})();
+/* ===== END PAGE: FAQ-SHIPPING ===== */

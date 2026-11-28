@@ -2032,3 +2032,333 @@ section[id] {
     transform: none;
   }
 }
+
+/* ===== PAGE: LOGIN ===== */
+.login-section {
+  padding: 72px 0 88px;
+}
+
+.login-panel {
+  --login-error: #9B3B2F;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 40px;
+  box-shadow: 0 24px 56px rgba(26, 23, 20, 0.05);
+}
+
+.login-screen[hidden] {
+  display: none;
+}
+
+.login-header__title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 38px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+.login-header__sub {
+  margin-top: 6px;
+  font-size: 15.5px;
+  color: var(--color-text-muted);
+}
+
+.login-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  margin: 24px 0 26px;
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+
+.login-tab {
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.login-tab:hover {
+  color: var(--color-ink);
+}
+
+.login-tab.is-active {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-ink);
+}
+
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-size: 15.5px;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.login-input--password {
+  padding-right: 48px;
+}
+
+.login-input:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-color: var(--color-gold);
+}
+
+.login-input.is-invalid {
+  border-color: var(--login-error);
+}
+
+.login-toggle-pw {
+  position: absolute;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.login-toggle-pw:hover {
+  color: var(--color-ink);
+}
+
+.login-toggle-pw svg {
+  width: 20px;
+  height: 20px;
+}
+
+.login-error {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--login-error);
+}
+
+.login-submit-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.login-aux {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.login-text-link {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+.login-text-link:hover {
+  color: var(--color-ink);
+}
+
+.login-back-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.login-back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-cream);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--color-ink);
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.login-back-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.login-status-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-gold);
+  background-color: rgba(193, 154, 79, 0.14);
+  color: var(--color-ink);
+  font-size: 14.5px;
+  text-align: center;
+}
+
+.login-status-box[hidden] {
+  display: none;
+}
+
+.login-success-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 12px 0 4px;
+}
+
+.login-success-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: rgba(193, 154, 79, 0.16);
+  border: 1px solid var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  margin-bottom: 4px;
+}
+
+.login-success-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 699px) {
+  .login-section {
+    padding: 48px 0 64px;
+  }
+
+  .login-panel {
+    padding: 40px 24px;
+  }
+}
+/* ===== END PAGE: LOGIN ===== */
+
+/* ===== PAGE: NEW-SALE ===== */
+.new-sale-main {
+  padding: 56px 0 88px;
+}
+
+.new-sale-toolbar .filter-chip.is-active {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.new-sale-section {
+  padding: 24px 0 56px;
+}
+
+.new-sale-section + .new-sale-section {
+  padding-top: 56px;
+  border-top: 1px solid var(--color-border);
+}
+
+.new-sale-section[hidden] {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  .new-sale-main {
+    padding: 40px 0 64px;
+  }
+
+  .new-sale-toolbar {
+    align-items: stretch;
+  }
+
+  .new-sale-toolbar .sort-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .new-sale-toolbar .form-select {
+    flex: 1;
+  }
+}
+/* ===== END PAGE: NEW-SALE ===== */
+
+/* ===== PAGE: FAQ-SHIPPING ===== */
+.faq-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.faq-panel__body strong {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+@media (max-width: 699px) {
+  .faq-trigger {
+    padding: 20px;
+    font-size: 21px;
+  }
+
+  .faq-panel__body {
+    padding: 0 20px 20px;
+  }
+
+  .faq-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .faq-actions .btn {
+    width: 100%;
+  }
+}
+/* ===== END PAGE: FAQ-SHIPPING ===== */
