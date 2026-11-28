@@ -27,13 +27,13 @@
     }
   }
 
-  function saveCart(cart) {
+  function saveCart(cart, shouldPulse) {
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     } catch (err) {
       // Fail gracefully if storage is restricted
     }
-    updateBagBadge();
+    updateBagBadge(shouldPulse);
     window.dispatchEvent(new CustomEvent('mz:cart-updated', { detail: { cart } }));
   }
 
@@ -68,7 +68,7 @@
       });
     }
 
-    saveCart(cart);
+    saveCart(cart, true);
     showToast(item.name + ' added to your bag');
   }
 
@@ -85,19 +85,35 @@
         next.push(item);
       }
     });
-    saveCart(next);
+    saveCart(next, true);
   }
 
   function clearCart() {
-    saveCart([]);
+    saveCart([], false);
   }
 
-  function updateBagBadge() {
+  function updateBagBadge(shouldPulse) {
     const count = getCartCount();
     const badges = document.querySelectorAll('[data-bag-count]');
     badges.forEach(function (badge) {
       badge.textContent = String(count);
       badge.classList.toggle('has-items', count > 0);
+      if (shouldPulse) {
+        badge.classList.remove('is-updated');
+        void badge.offsetWidth;
+        badge.classList.add('is-updated');
+        window.setTimeout(function () {
+          badge.classList.remove('is-updated');
+        }, 260);
+      }
+    });
+
+    const bagTriggers = document.querySelectorAll('[data-open-bag]');
+    bagTriggers.forEach(function (trigger) {
+      trigger.setAttribute(
+        'aria-label',
+        'Open shopping bag (' + count + (count === 1 ? ' item)' : ' items)')
+      );
     });
   }
 
@@ -147,8 +163,36 @@
   /* --------------------------------------------------------------------------
      Shared Modal Helpers & Quick Bag Modal
      -------------------------------------------------------------------------- */
+  function bindModalHandlers(overlay) {
+    if (!overlay || overlay.dataset.mzModalBound === 'true') return;
+    overlay.dataset.mzModalBound = 'true';
+
+    let pointerStartedOnBackdrop = false;
+
+    overlay.addEventListener('mousedown', function (event) {
+      pointerStartedOnBackdrop = (event.target === overlay);
+    });
+
+    overlay.addEventListener('touchstart', function (event) {
+      pointerStartedOnBackdrop = (event.target === overlay);
+    }, { passive: true });
+
+    overlay.addEventListener('click', function (event) {
+      const closeBtn = event.target.closest ? event.target.closest('[data-modal-close]') : null;
+      if (closeBtn && overlay.contains(closeBtn)) {
+        closeModal(overlay);
+        return;
+      }
+      if (event.target === overlay && (pointerStartedOnBackdrop || event.detail === 0)) {
+        closeModal(overlay);
+      }
+      pointerStartedOnBackdrop = false;
+    });
+  }
+
   function openModal(overlay) {
     if (!overlay) return;
+    bindModalHandlers(overlay);
     lastFocusedElement = document.activeElement;
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
@@ -159,6 +203,9 @@
 
   function closeModal(overlay) {
     if (!overlay) return;
+    if (!overlay.classList.contains('is-open') && overlay.getAttribute('aria-hidden') !== 'false') {
+      return;
+    }
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -307,12 +354,7 @@
       '</div>';
 
     document.body.appendChild(overlay);
-
-    overlay.addEventListener('click', function (event) {
-      if (event.target === overlay || event.target.hasAttribute('data-modal-close')) {
-        closeModal(overlay);
-      }
-    });
+    bindModalHandlers(overlay);
 
     return overlay;
   }
@@ -371,13 +413,21 @@
       });
     });
 
+    // Bind close button and dark backdrop click handlers on existing modals
+    document.querySelectorAll('.modal-overlay').forEach(bindModalHandlers);
+
     // Global Escape key handler for drawer and open modals
     document.addEventListener('keydown', function (event) {
-      if (event.key !== 'Escape') return;
-      if (drawer && drawer.classList.contains('is-open')) {
+      if (event.key !== 'Escape' && event.key !== 'Esc') return;
+      const openModals = document.querySelectorAll('.modal-overlay.is-open');
+      const drawerOpen = drawer && drawer.classList.contains('is-open');
+      if (drawerOpen || openModals.length > 0) {
+        event.preventDefault();
+      }
+      if (drawerOpen) {
         closeDrawer();
       }
-      document.querySelectorAll('.modal-overlay.is-open').forEach(function (modal) {
+      openModals.forEach(function (modal) {
         closeModal(modal);
       });
     });

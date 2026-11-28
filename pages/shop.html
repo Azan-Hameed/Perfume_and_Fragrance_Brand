@@ -38,7 +38,7 @@
             <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
           </svg>
           <span class="bag-trigger__label">Bag</span>
-          <span class="bag-count" data-bag-count>0</span>
+          <span class="bag-count" data-bag-count aria-live="polite">0</span>
         </button>
 
         <button type="button" class="menu-toggle" data-drawer-open aria-label="Open navigation menu" aria-controls="mobile-drawer" aria-expanded="false">
@@ -116,6 +116,7 @@
 
         <div class="results-meta">
           <p id="results-count" aria-live="polite">Showing 6 creations</p>
+          <button type="button" id="toolbar-reset-filters-btn" class="btn-reset-filters" hidden>Reset Filters</button>
         </div>
 
         <div id="products-grid" class="cards-grid"></div>
@@ -125,7 +126,7 @@
           <p class="empty-state__text">
             No fragrances match your current category or note filter. Reset your filters to view the full Maison Zayn collection.
           </p>
-          <button type="button" id="reset-filters-btn" class="btn btn-primary">Reset Filters</button>
+          <button type="button" id="reset-filters-btn" class="btn btn-gold">Reset Filters</button>
         </div>
       </div>
     </section>
@@ -328,6 +329,7 @@
       const sortSelect = document.getElementById('shop-sort');
       const searchInput = document.getElementById('shop-search');
       const resetBtn = document.getElementById('reset-filters-btn');
+      const toolbarResetBtn = document.getElementById('toolbar-reset-filters-btn');
 
       const modalEl = document.getElementById('product-modal');
       const modalBottleEl = document.getElementById('modal-bottle-visual');
@@ -384,9 +386,13 @@
 
       function renderProducts() {
         const list = getFilteredProducts();
+        const isFiltered = activeCategory !== 'ALL' || searchTerm.trim() !== '' || activeSort !== 'featured';
         gridEl.innerHTML = '';
 
         countEl.textContent = 'Showing ' + list.length + (list.length === 1 ? ' creation' : ' creations');
+        if (toolbarResetBtn) {
+          toolbarResetBtn.hidden = !isFiltered || list.length === 0;
+        }
 
         if (list.length === 0) {
           gridEl.hidden = true;
@@ -473,12 +479,9 @@
       });
 
       resetBtn.addEventListener('click', resetFilters);
-
-      modalEl.addEventListener('click', function (event) {
-        if (event.target === modalEl || event.target.hasAttribute('data-modal-close')) {
-          window.MaisonZayn.closeModal(modalEl);
-        }
-      });
+      if (toolbarResetBtn) {
+        toolbarResetBtn.addEventListener('click', resetFilters);
+      }
 
       modalAddBtn.addEventListener('click', function () {
         if (!activeModalProduct) return;
