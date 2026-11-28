@@ -453,8 +453,48 @@
   flex: 1;
   min-width: 0;
   background-color: var(--color-cream);
+  padding: 11px 12px;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
+}
+
+.cart-promo-input::placeholder {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+/* Toast Action Link (View Bag) */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toast.is-visible {
+  pointer-events: auto;
+}
+
+.toast__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.toast__action:hover {
+  background-color: var(--color-gold-light);
+  color: var(--color-ink);
 }
 
 .cart-promo-btn {
